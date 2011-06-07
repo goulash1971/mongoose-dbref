@@ -1,3 +1,3 @@
-**v0.0.1** (2011-05-26):
+**v0.0.1** (2011-06-06):
 
-  - Initial version of teh DSL using Mongose 1.3.3
+  - Initial version of the DBRef Plugin for Mongose 1.3.3
