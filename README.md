@@ -25,6 +25,7 @@ The extension provides the following utilities:
 
 ### Setup
 To install all of the types, plugins and utilities provided by the extension into a mongoose instance:
+
 	var mongoose = require("mongoose");
 	   
 	// Create a connection to your database
@@ -35,6 +36,7 @@ To install all of the types, plugins and utilities provided by the extension int
 	var utils = dbref.install(mongoose);
 
 To just install the types provided by the extension (either all types or a list of named types):
+
 	var mongoose = require("mongoose");
    
 	// Create a connection to your database
@@ -45,6 +47,7 @@ To just install the types provided by the extension (either all types or a list 
 	var utils = dbref.loadTypes(mongoose);
 
 To just install the plugins provided by the extension (either all plugins or list of named plugins):
+
 	var mongoose = require("mongoose");
 	   
 	// Create a connection to your database
@@ -60,6 +63,7 @@ Once you have loaded the types, or installed the whole extension, you can begin 
 #### Type: `DBRef`
 The `DBRef` type is a top-level schema type that can be used to identfied a field as holding
 a MongoDb database reference.  You use the type as you would any other standard type.
+
 	var DBRef = mongoose.SchemaTypes.DBRef;
 	
 	var LineItemSchema = new Schema({
@@ -89,6 +93,7 @@ These methods will map DBRef values to/from objects via the database connection 
 model.
 
 For example:
+
 	var LineItemSchema = new Schema({
 		order: {type: DBRef, resolve: true},
 	 	description: String,
