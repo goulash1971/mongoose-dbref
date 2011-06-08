@@ -78,16 +78,16 @@ a MongoDb database reference.  You use the type as you would any other standard 
 	});
 
 This will create two schema - `OrderSchema` that has a field (`lineItems`) which can hold 
-multiple references, and `LineItemSchema` that has a field 'order' with a single reference.
+multiple references, and `LineItemSchema` that has a field `order` with a single reference.
 
-All of the 'standard' options (`required`, `index` etc) can be applied to these fields.
+All of the *standard* options (`required`, `index` etc) can be applied to these fields.
 
 ### Using the plugins
 Once you have installed the plugins, or installed the whole extension, you can begin to use them.
 
 #### Plugin: `resolveDBRefs`
 The `resolveDBRefs` plugin can be used to be used to automatically install *getter* and *setter*
-methods for fields where a 'resolve' option has been set.
+methods for fields where a `resolve` option has been set.
 
 These methods will map DBRef values to/from objects via the database connection of the owning 
 model.
@@ -104,13 +104,13 @@ This will create two methods:
 - `getOrder(callback)` - this will asynchronously resolve the DBRef value in the `order` field
 - `setOrder(value)` - this will cast the `value` (a model) to a DBRef value
 
-In addition if the 'cache' option is set, then the object resolved from teh DBRef value will be 
+In addition if the `cache` option is set, then the object resolved from teh DBRef value will be 
 cached in a cache property (`$order` for the `order` field) and the getter method signature
-will be changed to `getOrder(callback, force)`.  The additional, optional, parameter 'force'
+will be changed to `getOrder(callback, force)`.  The additional, optional, parameter `force`
 can be used to by pass any cached value.
 
-This plugin can be installed on a mongoose instance or on individual schema, but the "owning"
-mongoose instance for the schema must always be specified.  
+This plugin can be installed on the mongoose instance or on individual schema, but the "owning"
+mongoose instance for the schema must always be specified during the installation.
 
 ### Using the utilities
 Once you have installed the utilities, or installed the whole extension, you can begin to use them.
@@ -135,8 +135,8 @@ database connection and a callback function.
 				});
 		});
 
-In this example, the 'order' of a specific 'LineItem' is fetched using the database connection that
-was used to find the 'LineItem' instance.
+In this example, the `order` of a specific `LineItem` is fetched using the database connection that
+was used to find the `LineItem` instance.
 
 ### Contributors
 - [Stuart Hudson](https://github.com/goulash1971)
