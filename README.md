@@ -101,13 +101,15 @@ For example:
 	});
 
 This will create two methods:
+
 - `getOrder(callback)` - this will asynchronously resolve the DBRef value in the `order` field
+
 - `setOrder(value)` - this will cast the `value` (a model) to a DBRef value
 
-In addition if the `cache` option is set, then the object resolved from teh DBRef value will be 
+In addition if the `cache` option is set, then the object resolved from teh `DBRef` value will be 
 cached in a cache property (`$order` for the `order` field) and the getter method signature
 will be changed to `getOrder(callback, force)`.  The additional, optional, parameter `force`
-can be used to by pass any cached value.
+can be used to bypass any cached value.
 
 This plugin can be installed on the mongoose instance or on individual schema, but the "owning"
 mongoose instance for the schema must always be specified during the installation.
