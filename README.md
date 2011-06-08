@@ -113,6 +113,7 @@ Once you have installed the utilities, or installed the whole extension, you can
 #### Utility: `fetch`
 This `fetch` utility function can be used to resolve a given `DBRef` value when supplied with a mongoose
 database connection and a callback function.
+
 	var mongoose = require("mongoose");
 	var db = mongoose.createConnection("mongodb://localhost/sampledb");
 	
