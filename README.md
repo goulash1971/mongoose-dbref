@@ -110,8 +110,8 @@ mongoose instance for the schema must always be specified.
 ### Using the utilities
 Once you have installed the utilities, or installed the whole extension, you can begin to use them.
 
-#### Utility: `utils.fetch`
-This utility function can be used to resolve a given `DBRef` value when supplied with a mongoose
+#### Utility: `fetch`
+This `fetch` utility function can be used to resolve a given `DBRef` value when supplied with a mongoose
 database connection and a callback function.
 	var mongoose = require("mongoose");
 	var db = mongoose.createConnection("mongodb://localhost/sampledb");
