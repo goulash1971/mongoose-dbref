@@ -57,7 +57,7 @@ To just install the plugins provided by the extension (either all plugins or lis
 ### Using the types
 Once you have loaded the types, or installed the whole extension, you can begin to use them.
 
-#### `DBRef`
+#### Type: `DBRef`
 The `DBRef` type is a top-level schema type that can be used to identfied a field as holding
 a MongoDb database reference.  You use the type as you would any other standard type.
 	var DBRef = mongoose.SchemaTypes.DBRef;
@@ -81,7 +81,7 @@ All of the 'standard' options (`required`, `index` etc) can be applied to these 
 ### Using the plugins
 Once you have installed the plugins, or installed the whole extension, you can begin to use them.
 
-#### `resolveDBRefs`
+#### Plugin: `resolveDBRefs`
 The `resolveDBRefs` plugin can be used to be used to automatically install *getter* and *setter*
 methods for fields where a 'resolve' option has been set.
 
@@ -110,7 +110,7 @@ mongoose instance for the schema must always be specified.
 ### Using the utilities
 Once you have installed the utilities, or installed the whole extension, you can begin to use them.
 
-#### `utils.fetch`
+#### Utility: `utils.fetch`
 This utility function can be used to resolve a given `DBRef` value when supplied with a mongoose
 database connection and a callback function.
 	var mongoose = require("mongoose");
@@ -139,7 +139,7 @@ was used to find the 'LineItem' instance.
 MIT License
 
 ### Acknowledgements
-- Brian Noguchi for the 'mongoose-types' extension that was used as a template for this extension
+- [Brian Noguchi](https://github.com/bnoguchi) for the 'mongoose-types' extension that was used as a template for this extension
 
 ---
 ### Author
