@@ -102,9 +102,9 @@ For example:
 
 This will create two methods:
 
-- `getOrder(callback)` - this will asynchronously resolve the DBRef value in the `order` field
+- `getOrder(callback)` - this will asynchronously resolve the `DBRef` value in the `order` field
 
-- `setOrder(value)` - this will cast the `value` (a model) to a DBRef value
+- `setOrder(value)` - this will cast the `value` (a model) to a `DBRef` value that is set in the `order` field
 
 In addition if the `cache` option is set, then the object resolved from teh `DBRef` value will be 
 cached in a cache property (`$order` for the `order` field) and the getter method signature
