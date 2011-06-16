@@ -1,6 +1,5 @@
 {
   "name": "mongoose-dbref",
-  "private": true,
   "description": "Plugin support for DBRef in Mongoose",
   "version": "0.0.1",
   "author": "Stuart Hudson <goulash1971@yahoo.com>",

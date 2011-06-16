@@ -4,8 +4,8 @@ mongoose-dbref - Plugin support for DBRef in Mongoose
 ### Overview
 
 Mongoose-DBRef is an extension for Mongoose that exposes the DBRef type from the the `node-mongodb-native`
-driver as a top level type in the Mongoose ORM and provides some utilities and plugins that allow DBRef instances 
-to be dereferenced from the models.
+driver as a top level type in the Mongoose ORM and provides some utilities, plugins and patches that allow 
+DBRef instances to be dereferenced from the models.
 
 The extension provides the following types:
 
@@ -14,6 +14,11 @@ The extension provides the following types:
 The extension provides the following plugins:
 
 - `resolveDBRefs` : used to create getter/setter methods that resolve DBRefs
+- `dbrefHooks` : adds hooks to schema and model for DBRefs
+
+The extsion includes the following monkey-patches:
+
+- `dbref.fetch` : used to resolve the dbref against a supplied connection
 
 The extension provides the following utilities:
 
@@ -24,7 +29,8 @@ The extension provides the following utilities:
 	npm install mongoose-dbref
 
 ### Setup
-To install all of the types, plugins and utilities provided by the extension into a mongoose instance:
+To install all of the types, plugins, patches and utilities provided by the extension into a mongoose 
+instance:
 
 	var mongoose = require("mongoose");
 	   
@@ -42,7 +48,7 @@ To just install the types provided by the extension (either all types or a list 
 	// Create a connection to your database
 	var db = mongoose.createConnection("mongodb://localhost/sampledb");
 
-	// Access the mongoose-dbref module and install everything
+	// Access the mongoose-dbref module and install types
 	var dbref = require("mongoose-dbref");
 	var utils = dbref.loadTypes(mongoose);
 
@@ -53,9 +59,20 @@ To just install the plugins provided by the extension (either all plugins or lis
 	// Create a connection to your database
 	var db = mongoose.createConnection("mongodb://localhost/sampledb");
 	
-	// Access the mongoose-dbref module and install everything
+	// Access the mongoose-dbref module and install plugins
 	var dbref = require("mongoose-dbref");
-	var utils = dbref.loadTypes(mongoose);
+	var utils = dbref.installPlugins(mongoose);
+
+To just install the patches provided by the extension (either all patches or list of named patches):
+
+	var mongoose = require("mongoose");
+	   
+	// Create a connection to your database
+	var db = mongoose.createConnection("mongodb://localhost/sampledb");
+	
+	// Access the mongoose-dbref module and install patches
+	var dbref = require("mongoose-dbref");
+	var utils = dbref.installPatches(mongoose);
 
 ### Using the types
 Once you have loaded the types, or installed the whole extension, you can begin to use them.
@@ -113,6 +130,40 @@ can be used to bypass any cached value.
 
 This plugin can be installed on the mongoose instance or on individual schema, but the "owning"
 mongoose instance for the schema must always be specified during the installation.
+
+#### Plugin: `dbrefHooks`
+The `dbrefHooks` plugin can be used to create *hooks* that on the `model` and `schema` instances that
+map to/from `DBRef` values.
+
+To do this a `_dbref` virtual and a `fetch` static are installed on each `schema` created such that 
+the `_dbref` virtual will return the `DBRef` for the `model` instance, and the `fetch` static will
+resolve a supplied `DBRef` and invoke a callback function appropriately.
+
+### Using the patches
+Once you have installed the patches, or installed the whole extension, you can begin to use them.
+
+#### Patch: `dbref.fetch`
+This `fetch` utility patch to the `DBRef` class can be used to resolve a `DBRef` value when supplied with 
+a mongoos database connection and a callback function.
+
+	var mongoose = require("mongoose");
+	var db = mongoose.createConnection("mongodb://localhost/sampledb");
+	
+	var utils = require("mongoose-dbref").utils;
+	
+	var LineItem = db.model('LineItem');
+	
+	LineItem.findById("4dee1f473abd4fbc61000001",
+		function(err, doc) {
+			doc.order.fetch(db, 
+				function(err, doc) {
+				    if (err) throw err;
+					console.log("Order = " + doc);
+				});
+		});
+
+In this example, the `order` of a specific `LineItem` is fetched using the database connection that
+was used to find the `LineItem` instance.
 
 ### Using the utilities
 Once you have installed the utilities, or installed the whole extension, you can begin to use them.
