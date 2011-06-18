@@ -18,7 +18,7 @@ The extension provides the following plugins:
 - `resolveDBRefs` : used to create getter/setter methods that resolve DBRefs
 - `dbrefHooks` : adds hooks to schema and model for DBRefs
 
-The extsion includes the following monkey-patches:
+The extension includes the following monkey-patches:
 
 - `dbref.fetch` : used to resolve the dbref against a supplied connection
 
@@ -31,7 +31,7 @@ The extension provides the following utilities:
 	npm install mongoose-dbref
 
 ### Setup
-To install all of the types, plugins, patches and utilities provided by the extension into a mongoose 
+To install all of the types, plugins, patches and utilities provided by the extension into a Mongoose 
 instance:
 
 	var mongoose = require("mongoose");
@@ -145,7 +145,7 @@ resolve a supplied `DBRef` and invoke a callback function appropriately.
 Once you have installed the patches, or installed the whole extension, you can begin to use them.
 
 #### Patch: `dbref.fetch`
-This `fetch` utility patch to the `DBRef` class can be used to resolve a `DBRef` value when supplied with 
+This `fetch` monkey patch to the `DBRef` class can be used to resolve a `DBRef` value when supplied with 
 a mongoos database connection and a callback function.
 
 	var mongoose = require("mongoose");
