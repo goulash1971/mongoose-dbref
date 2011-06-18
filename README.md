@@ -7,7 +7,7 @@ Mongoose-DBRef is an extension for Mongoose that exposes the DBRef type from the
 driver as a top level type in the Mongoose ORM and provides some utilities, plugins and patches that allow 
 DBRef instances to be dereferenced from the models.
 
-#### Extension components
+#### Extension contents
 
 The extension provides the following types:
 
