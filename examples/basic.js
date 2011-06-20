@@ -3,9 +3,12 @@ var mongoose = require("mongoose");
 // Create a connection 
 var db = mongoose.createConnection();
 
-// Access the mongoose-dbref module and install everything
+// Access the mongoose-dbref module
 var dbref = require("mongoose-dbref");
-var utils = dbref.install(mongoose);
+var utils = dbref.utils;
+
+// Install everything
+var loaded = dbref.install(mongoose);
 
 // Create the schemas
 var Schema = mongoose.Schema;

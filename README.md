@@ -41,7 +41,15 @@ instance:
 	
 	// Access the mongoose-dbref module and install everything
 	var dbref = require("mongoose-dbref");
-	var utils = dbref.install(mongoose);
+	var utils = dbref.utils
+	
+	// Install the types, plugins and monkey patches
+	var loaded = dbref.install(mongoose);
+
+The `loaded` value returned contains 2 properties:
+
+- `loaded.types` : the join types that were loaded
+- `loaded.plugins` : the extension plugins that were loaded
 
 To just install the types provided by the extension (either all types or a list of named types):
 
@@ -50,9 +58,15 @@ To just install the types provided by the extension (either all types or a list 
 	// Create a connection to your database
 	var db = mongoose.createConnection("mongodb://localhost/sampledb");
 
-	// Access the mongoose-dbref module and install types
+	// Access the mongoose-dbref module
 	var dbref = require("mongoose-dbref");
-	var utils = dbref.loadTypes(mongoose);
+	var utils = dbref.utils
+	
+	// Install the plugins
+	var loaded = dbref.loadTypes(mongoose);
+
+The `loaded` value returned contains the types that were loaded, keyed by the name of each type 
+loaded.
 
 To just install the plugins provided by the extension (either all plugins or list of named plugins):
 
@@ -61,9 +75,15 @@ To just install the plugins provided by the extension (either all plugins or lis
 	// Create a connection to your database
 	var db = mongoose.createConnection("mongodb://localhost/sampledb");
 	
-	// Access the mongoose-dbref module and install plugins
+	// Access the mongoose-dbref module
 	var dbref = require("mongoose-dbref");
-	var utils = dbref.installPlugins(mongoose);
+	var utils = dbref.utils
+	
+	// Install the plugins
+	var loaded = dbref.installPlugins(mongoose);
+
+The `loaded` value returned contains the plugins that were loaded, keyed by the name of each plugin 
+loaded.
 
 To just install the patches provided by the extension (either all patches or list of named patches):
 
@@ -72,9 +92,12 @@ To just install the patches provided by the extension (either all patches or lis
 	// Create a connection to your database
 	var db = mongoose.createConnection("mongodb://localhost/sampledb");
 	
-	// Access the mongoose-dbref module and install patches
+	// Access the mongoose-dbref module and the utilities
 	var dbref = require("mongoose-dbref");
-	var utils = dbref.installPatches(mongoose);
+	var utils = dbref.utils;
+	
+	// Install the monkey patches
+	dbref.installPatches(mongoose);
 
 ### Using the types
 Once you have loaded the types, or installed the whole extension, you can begin to use them.
