@@ -51,7 +51,18 @@ The `loaded` value returned contains 2 properties:
 - `loaded.types` : the join types that were loaded
 - `loaded.plugins` : the extension plugins that were loaded
 
-To just install the types provided by the extension (either all types or a list of named types):
+If you want to control what is installed, you can either install types/plugins/patches separately (see below)
+or pass in a second argument to the `install` function.
+
+If this second argument is a `Function` then it will be used as a filter when installing the types, plugins and
+patches.  If it is an `Object` then the `types` property (either a filter `Function` or list of type names) is used
+when loading the types, the `plugins` property (either a filter `Function` or list of plugin names) is used when
+installing the plugins and the `patches` property (either a filter `Function` or list of patch names) is used when
+installing the patches.
+
+#### Loading Types Only
+
+To just install the types provided by the extension:
 
 	var mongoose = require("mongoose");
    
@@ -68,7 +79,15 @@ To just install the types provided by the extension (either all types or a list 
 The `loaded` value returned contains the types that were loaded, keyed by the name of each type 
 loaded.
 
-To just install the plugins provided by the extension (either all plugins or list of named plugins):
+If you just want to load a specific list of types, or want to filter the types loaded then use one
+of the following signatures with the `loadTypes()` function:
+
+   - `loadTypes(mongoose, 'dbref') : just loads the `dbref` type
+   - `loadTypes(mongoose, function(type) { return type.slice(1,2) === 'db'; })` : loads types starting with `db`
+
+#### Installing Plugins Only
+
+To just install the plugins provided by the extension:
 
 	var mongoose = require("mongoose");
 	   
@@ -85,7 +104,15 @@ To just install the plugins provided by the extension (either all plugins or lis
 The `loaded` value returned contains the plugins that were loaded, keyed by the name of each plugin 
 loaded.
 
-To just install the patches provided by the extension (either all patches or list of named patches):
+If you just want to install a specific list of plugins, or want to filter the plugins loaded then use one
+of the following signatures with the `installPlugins()` function:
+
+   - `installPlugins(mongoose, 'resolveDBRefs') : just install the `resolveDBRef` plugin
+   - `installPlugins(mongoose, function(plugin) { return plugin.slice(1,2) === 'db'; })` : installs plugins starting with `db`
+
+#### Installing Patches Only
+
+To just install the patches provided by the extension (all patches, named named patches or filtered patches):
 
 	var mongoose = require("mongoose");
 	   
@@ -98,6 +125,12 @@ To just install the patches provided by the extension (either all patches or lis
 	
 	// Install the monkey patches
 	dbref.installPatches(mongoose);
+
+If you just want to install a specific list of patches, or want to filter the patches loaded then use one
+of the following signatures with the `installPatches()` function:
+
+   - `installPatches(mongoose, 'fetch') : just install the `fetch` patch
+   - `installPatches(mongoose, function(patch) { return patch.slice(1,2) === 'db'; })` : installs patch starting with `db`
 
 ### Using the types
 Once you have loaded the types, or installed the whole extension, you can begin to use them.
