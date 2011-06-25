@@ -26,7 +26,6 @@ The extension provides the following utilities:
 
 - `fetch` : fetches the object referenced by a DBRef value
 
-
 ### Installation
 	npm install mongoose-dbref
 
@@ -82,7 +81,7 @@ loaded.
 If you just want to load a specific list of types, or want to filter the types loaded then use one
 of the following signatures with the `loadTypes()` function:
 
-   - `loadTypes(mongoose, 'dbref') : just loads the `dbref` type
+   - `loadTypes(mongoose, 'dbref')` : just loads the `dbref` type
    - `loadTypes(mongoose, function(type) { return type.slice(1,2) === 'db'; })` : loads types starting with `db`
 
 #### Installing Plugins Only
@@ -107,7 +106,7 @@ loaded.
 If you just want to install a specific list of plugins, or want to filter the plugins loaded then use one
 of the following signatures with the `installPlugins()` function:
 
-   - `installPlugins(mongoose, 'resolveDBRefs') : just install the `resolveDBRef` plugin
+   - `installPlugins(mongoose, 'resolveDBRefs')` : just install the `resolveDBRef` plugin
    - `installPlugins(mongoose, function(plugin) { return plugin.slice(1,2) === 'db'; })` : installs plugins starting with `db`
 
 #### Installing Patches Only
@@ -129,7 +128,7 @@ To just install the patches provided by the extension (all patches, named named 
 If you just want to install a specific list of patches, or want to filter the patches loaded then use one
 of the following signatures with the `installPatches()` function:
 
-   - `installPatches(mongoose, 'fetch') : just install the `fetch` patch
+   - `installPatches(mongoose, 'fetch')` : just install the `fetch` patch
    - `installPatches(mongoose, function(patch) { return patch.slice(1,2) === 'db'; })` : installs patch starting with `db`
 
 ### Using the types
