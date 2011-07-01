@@ -3,7 +3,7 @@ var mongoose = require('mongoose')
   , Schema = mongoose.Schema
   , db = mongoose.createConnection('mongodb://localhost/mongoose_dbref_tests');
 
-require("../").loadTypes(mongoose, 'dbref');
+require("../").loadTypes(mongoose, ['dbref']);
 
 var JournalSchema = new Schema({
   related: mongoose.SchemaTypes.DBRef
