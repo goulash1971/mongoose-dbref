@@ -1,7 +1,7 @@
 {
   "name": "mongoose-dbref",
   "description": "Plugin support for DBRef in Mongoose",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Stuart Hudson <goulash1971@yahoo.com>",
   "keywords": ["mongodb", "mongoose", "mongo", "types", "dbref"],
   "homepage": "https://github.com/goulash1971/mongoose-dbref",
@@ -11,7 +11,7 @@
   "dependencies": {
 	"mongoose": ">= 1.0.16"
   },
-  "scripts": { 
+  "scripts": {
     "test": "make test"
   },
   "directories": {
@@ -19,14 +19,14 @@
 	"test": "tests/"
   },
   "main": "./index",
-  "engines": { 
-    "node": ">= 0.1.101" 
+  "engines": {
+    "node": ">= 0.1.101"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/goulash1971/mongoose-dbref.git"
   },
-  "licenses": [ 
+  "licenses": [
     {"type": "The MIT License", "url": "http://www.opensource.org/licenses/mit-license.php"}
   ]
 }
